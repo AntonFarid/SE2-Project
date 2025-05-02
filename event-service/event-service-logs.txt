@@ -11,3 +11,16 @@
 [2025-04-30T21:11:35.206300800] Method getAllEvents executed successfully in 98 ms.
 [2025-04-30T21:11:47.201237900] Method createEvent executed successfully in 1 ms.
 [2025-04-30T21:11:50.546461600] Method getAllEvents executed successfully in 2 ms.
+[2025-05-01T01:37:45.507200400] Method createEvent executed successfully in 92 ms.
+[2025-05-01T01:39:02.797332900] Method createEvent executed successfully in 3 ms.
+[2025-05-01T01:39:45.403287700] Method getAllEvents executed successfully in 114 ms.
+[2025-05-01T01:49:09.989592700] Method createEvent executed successfully in 2 ms.
+[2025-05-01T01:49:21.241845200] Method getAllEvents executed successfully in 3 ms.
+[2025-05-01T01:49:35.950570800] Method getEventById executed successfully in 17 ms.
+[2025-05-01T01:49:40.495683] Method getEventById executed successfully in 1 ms.
+[2025-05-01T01:49:47.220845100] Method deleteEvent executed successfully in 19 ms.
+[2025-05-01T01:49:54.366635] Method getEventById executed successfully in 1 ms.
+[2025-05-01T01:50:06.739582600] Method getEventById executed successfully in 1 ms.
+[2025-05-01T01:52:21.682814600] Method rescheduleEvent executed successfully in 12 ms.
+[2025-05-01T01:52:37.125395300] Method rescheduleEvent executed successfully in 3 ms.
+[2025-05-01T01:52:54.870105500] Method rescheduleEvent executed successfully in 5 ms.
