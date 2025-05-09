@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Events</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="create-event.html">Create Event</a></li>
+        <li><a href="participants.html">Participants</a></li>
+        <li><a href="manage-events.html">Manage</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Manage Events</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Programming Workshop</td>
+        <td>
+          <button onclick="alert('Event cancelled!')">Cancel</button>
+          <button onclick="alert('Event rescheduled!')">Reschedule</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Networking Conference</td>
+        <td>
+          <button onclick="alert('Event cancelled!')">Cancel</button>
+          <button onclick="alert('Event rescheduled!')">Reschedule</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </main>
+
+  <footer>
+    <p>© 2025 Event Registration System</p>
+  </footer>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
