@@ -1,5 +1,6 @@
 package com.event.participant_service.controller;
 
+import com.event.participant_service.dto.ParticipantWithEventDTO;
 import com.event.participant_service.model.Participant;
 import com.event.participant_service.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class ParticipantController {
     @PostMapping("/register/{eventId}")
     public Participant registerToEvent(@PathVariable Long eventId, @RequestBody Participant participant){
         return participantService.registerToEvent(eventId, participant);
+    }
+
+    @GetMapping("/details")
+    public List<ParticipantWithEventDTO> getAllParticipantsWithEventTitles() {
+        return participantService.getAllParticipantsWithEventTitles();
     }
 }

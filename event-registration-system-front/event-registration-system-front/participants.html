@@ -9,7 +9,6 @@
 </head>
 <body>
   <header>
-    
     <nav>
       <ul class="navbar">
         <li><a href="index.html">Home</a></li>
@@ -17,44 +16,54 @@
         <li><a href="create-event.html">Create Event</a></li>
         <li><a href="participants.html">Participants</a></li>
         <li><a href="manage-events.html">Manage</a></li>
+        <li><a href="register.html">Manage</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <h1>Registered Participants</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Event</th>
-        <th>Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Programming Workshop</td>
-        <td>Ahmed Mohamed</td>
-        <td>ahmed@example.com</td>
-      </tr>
-      <tr>
-        <td>Networking Conference</td>
-        <td>Sara Ali</td>
-        <td>sara@example.com</td>
-      </tr>
-      <tr>
-        <td>Cybersecurity Seminar</td>
-        <td>Khaled Hassan</td>
-        <td>khaled@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="participantsTableBody">
+        <!-- Dynamic content will be inserted here -->
+      </tbody>
+    </table>
   </main>
 
   <footer>
     <p>© 2025 Event Registration System</p>
   </footer>
-  <script src="js/main.js"></script>
 
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost:8080/participants/details')
+      .then(response => response.json())
+      .then(participants => {
+        const tableBody = document.getElementById('participantsTableBody');
+        tableBody.innerHTML = '';
+        
+        participants.forEach(participant => {
+          const row = `
+            <tr>
+              <td>${participant.eventTitle}</td>
+              <td>${participant.name}</td>
+              <td>${participant.email}</td>
+            </tr>`;
+          tableBody.innerHTML += row;
+        });
+      })
+      .catch(error => {
+        console.error('Error loading participants:', error);
+        alert('Failed to load participants. Please try again later.');
+      });
+  });
+</script>
 </body>
 </html>

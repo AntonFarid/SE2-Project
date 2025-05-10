@@ -1,9 +1,6 @@
 package com.event.participant_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Participant {
@@ -20,14 +17,18 @@ public class Participant {
 
     private Long eventId;
 
+    @Transient
+    private String eventTitle;
+
     public Participant() {
     }
 
-    public Participant(Long id, String name, String email, String phone) {
+    public Participant(Long id, String name, String email, String phone, Long eventId, String eventTitle) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.eventId = eventId;
     }
 
     public Long getId() {
@@ -70,6 +71,14 @@ public class Participant {
         this.eventId = eventId;
     }
 
+    public String getEventTitle() {
+        return eventTitle;
+    }
+
+    public void setEventTitle(String eventTitle) {
+        this.eventTitle = eventTitle;
+    }
+
     @Override
     public String toString() {
         return "Participant{" +
@@ -78,6 +87,7 @@ public class Participant {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", eventId=" + eventId +
+                ", eventTitle='" + eventTitle + '\'' +  // إضافة eventTitle
                 '}';
     }
 }
