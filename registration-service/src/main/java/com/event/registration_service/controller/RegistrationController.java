@@ -1,12 +1,15 @@
 package com.event.registration_service.controller;
 
+import com.event.registration_service.dto.EventDto;
 import com.event.registration_service.model.Registration;
 import com.event.registration_service.repository.RegistrationRepository;
 import com.event.registration_service.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/registrations")
@@ -36,5 +39,4 @@ public class RegistrationController {
     public void deleteRegistration(@PathVariable Long id) {
         registrationService.deleteRegistration(id);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.event.event_service.aspect;
+package com.event.event_service.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.AfterThrowing;

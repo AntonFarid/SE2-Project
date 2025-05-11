@@ -17,9 +17,6 @@ public class Participant {
 
     private Long eventId;
 
-    @Transient
-    private String eventTitle;
-
     public Participant() {
     }
 
@@ -71,14 +68,6 @@ public class Participant {
         this.eventId = eventId;
     }
 
-    public String getEventTitle() {
-        return eventTitle;
-    }
-
-    public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
-    }
-
     @Override
     public String toString() {
         return "Participant{" +
@@ -87,7 +76,6 @@ public class Participant {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", eventId=" + eventId +
-                ", eventTitle='" + eventTitle + '\'' +  // إضافة eventTitle
                 '}';
     }
 }

@@ -17,6 +17,7 @@ public class EventService {
     }
 
     public Event createEvent(Event event) {
+        event.setAvailableSeats(event.getTotalSeats());
         return eventRepository.save(event);
     }
 
