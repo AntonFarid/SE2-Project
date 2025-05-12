@@ -25,6 +25,11 @@ public class ParticipantController {
         return participantService.getAllParticipants();
     }
 
+    @GetMapping("/{id}")
+    public Participant getParticipantById(@PathVariable Long id) {
+        return participantService.getParticipantById(id);
+    }
+
     @PostMapping("/register/{eventId}")
     public Participant registerToEvent(@PathVariable Long eventId, @RequestBody Participant participant){
         return participantService.registerToEvent(eventId, participant);

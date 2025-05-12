@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -60,4 +59,7 @@ public class ParticipantService {
         return participantRepository.save(participant);
     }
 
+    public Participant getParticipantById(Long id) {
+        return participantRepository.findById(id).orElse(null);
+    }
 }

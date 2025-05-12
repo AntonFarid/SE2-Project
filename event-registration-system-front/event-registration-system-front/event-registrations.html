@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Events</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="create-event.html">Create Event</a></li>
+        <li><a href="participants.html">Participants</a></li>
+        <li><a href="manage-events.html">Manage Events</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="event-registrations.html">Event Registrations</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>View Event Registrations</h2>
+    <select id="eventSelect">
+    <option value="">-- Select an Event --</option>
+    </select>
+
+<table id="registrationsTable" style="margin-top: 20px;">
+  <thead>
+    <tr>
+      <th>Participant Name</th>
+      <th>Email</th>
+      <th>Registration Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Event Registration System</p>
+  </footer>
+
+  <script>
+     fetch('http://localhost:8080/events')
+    .then(res => res.json())
+    .then(events => {
+      const select = document.getElementById("eventSelect");
+      events.forEach(event => {
+        const option = document.createElement("option");
+        option.value = event.id;
+        option.textContent = event.title;
+        select.appendChild(option);
+      });
+    });
+
+  document.getElementById("eventSelect").addEventListener("change", function () {
+    const eventId = this.value;
+    if (!eventId) return;
+
+    fetch(`http://localhost:8080/registrations/by-event/${eventId}`)
+      .then(res => res.json())
+      .then(registrations => {
+        const tbody = document.querySelector("#registrationsTable tbody");
+        tbody.innerHTML = "";
+
+        registrations.forEach(reg => {
+          const row = `
+            <tr>
+              <td>${reg.participantName}</td>
+              <td>${reg.participantEmail}</td>
+              <td>${reg.registrationDate}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+      });
+  });
+  </script>
+</body>
+</html>

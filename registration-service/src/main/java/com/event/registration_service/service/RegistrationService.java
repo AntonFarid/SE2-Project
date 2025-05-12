@@ -1,6 +1,8 @@
 package com.event.registration_service.service;
 
 import com.event.registration_service.dto.EventDto;
+import com.event.registration_service.dto.ParticipantDto;
+import com.event.registration_service.dto.RegistrationDTO;
 import com.event.registration_service.exception.RegistrationNotFoundException;
 import com.event.registration_service.model.Registration;
 import com.event.registration_service.repository.RegistrationRepository;
@@ -11,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RegistrationService {
@@ -22,6 +25,7 @@ public class RegistrationService {
     private RestTemplate restTemplate;
 
     private final String EVENT_SERVICE_URL = "http://localhost:8080/events/";
+    private final String PARTICIPANT_SERVICE_URL = "http://localhost:8080/participants/";
 
     public Registration register(Long eventId, Long participantId) {
         ResponseEntity<EventDto> response =     restTemplate.getForEntity(EVENT_SERVICE_URL + eventId, EventDto.class);
@@ -62,8 +66,22 @@ public class RegistrationService {
     }
 
     // to track registered participants (matloob fe el project)
-    public List<Registration> getRegistrationsByEventId(Long eventId) {
-        return registrationRepository.findByEventId(eventId);
+    public List<RegistrationDTO> getRegistrationsByEvent(Long eventId) {
+        List<Registration> regs = registrationRepository.findByEventId(eventId);
+
+        return regs.stream().map(registration -> {
+            ParticipantDto participant = restTemplate.getForObject(
+                    PARTICIPANT_SERVICE_URL + registration.getParticipantId(),
+                    ParticipantDto.class
+            );
+
+            return new RegistrationDTO(
+                    participant.getName(),
+                    participant.getEmail(),
+                    registration.getRegistrationDate()
+            );
+        }).collect(Collectors.toList());
+
     }
 
 }

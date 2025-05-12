@@ -1,6 +1,7 @@
 package com.event.registration_service.controller;
 
 import com.event.registration_service.dto.EventDto;
+import com.event.registration_service.dto.RegistrationDTO;
 import com.event.registration_service.model.Registration;
 import com.event.registration_service.repository.RegistrationRepository;
 import com.event.registration_service.service.RegistrationService;
@@ -38,5 +39,10 @@ public class RegistrationController {
     @DeleteMapping("/{id}")
     public void deleteRegistration(@PathVariable Long id) {
         registrationService.deleteRegistration(id);
+    }
+
+    @GetMapping("/by-event/{eventId}")
+    public List<RegistrationDTO> getRegistrationByEvent(@PathVariable Long eventId){
+        return registrationService.getRegistrationsByEvent(eventId);
     }
 }
